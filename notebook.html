@@ -27,25 +27,26 @@ body.kh-leaving{opacity:0;transition:opacity .15s ease-in;}
 <text fill="currentColor" font-family="'Noto Serif', serif" font-size="24" font-weight="bold" text-anchor="middle" x="50" y="55">古都</text>
 </svg>
 </div>
+<button type="button" data-open-profile="" class="absolute top-3 right-3 z-20 flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-lowest/90 text-on-surface-variant hover:text-primary shadow-sm font-label-sm text-label-sm"><span class="material-symbols-outlined text-[14px]">edit</span>수정</button>
 <!-- Passport Header & Identity -->
 <div class="flex items-center gap-space-md relative z-10">
 <div class="relative shrink-0">
-<img alt="김교토 님 프로필" class="w-16 h-16 rounded-xl object-cover shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEqQEMOyeZ_BDa1FVyjs4dmpXIu7jPRy6p-czTLZ1w3KLxBLl4_ldeF4EteM_2wVc87_ck-EAEGTxBbWaGdJ9r_pCapvk9DpoTxvNJub9xseFeTh1Zx0CygLmKYQilPy2_JSEivXgXKrjM90fla5E0RG8lhCWCFro0WFCXntAXdzJOIQ1dHiU92g6uZ4-h49f2QQHyM8A9sdLmoGs-XXIiTlb18TECDmcnB38SLnw"/>
-<span class="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-on-primary shadow">
+<div id="kh-passport-avatar-slot"><img alt="김교토 님 프로필" class="w-16 h-16 rounded-xl object-cover shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEqQEMOyeZ_BDa1FVyjs4dmpXIu7jPRy6p-czTLZ1w3KLxBLl4_ldeF4EteM_2wVc87_ck-EAEGTxBbWaGdJ9r_pCapvk9DpoTxvNJub9xseFeTh1Zx0CygLmKYQilPy2_JSEivXgXKrjM90fla5E0RG8lhCWCFro0WFCXntAXdzJOIQ1dHiU92g6uZ4-h49f2QQHyM8A9sdLmoGs-XXIiTlb18TECDmcnB38SLnw"/></div>
+<button type="button" data-open-profile="" aria-label="프로필 사진 바꾸기" class="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-on-primary shadow">
 <span class="material-symbols-outlined text-[14px]">stylus_note</span>
-</span>
+</button>
 </div>
-<div class="flex flex-col min-w-0">
+<div class="flex flex-col min-w-0 pr-16">
 <div class="flex items-center gap-space-xs">
-<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-semibold">
+<span id="kh-prof-level" class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-semibold">
               탐방 레벨 4
             </span>
-<span class="font-label-sm text-label-sm text-tertiary font-medium">고도 탐구자</span>
+<span id="kh-prof-title" class="font-label-sm text-label-sm text-tertiary font-medium">고도 탐구자</span>
 </div>
-<h2 class="font-headline-md text-headline-md text-on-surface tracking-tight mt-1 truncate">
+<h2 id="kh-prof-name" class="font-headline-md text-headline-md text-on-surface tracking-tight mt-1 truncate pr-2">
             김교토 <span class="font-body-md text-body-md text-on-surface-variant font-normal">님</span>
 </h2>
-<p class="font-body-sm text-body-sm text-on-surface-variant truncate">역사 답사가 · 교토 8회차 탐색 중</p>
+<p id="kh-prof-intro" class="font-body-sm text-body-sm text-on-surface-variant truncate">역사 답사가 · 교토 8회차 탐색 중</p>
 </div>
 </div>
 <!-- Exploration Progress Stats Grid -->
@@ -64,7 +65,7 @@ body.kh-leaving{opacity:0;transition:opacity .15s ease-in;}
 </div>
 <div class="flex flex-col items-center text-center">
 <span class="font-label-sm text-label-sm text-on-surface-variant">현장 기록</span>
-<span class="font-headline-sm text-headline-sm text-tertiary font-semibold mt-0.5">15<span class="text-body-sm text-on-surface-variant font-normal">개</span></span>
+<span id="kh-stat-notes" class="font-headline-sm text-headline-sm text-tertiary font-semibold mt-0.5">15<span class="text-body-sm text-on-surface-variant font-normal">개</span></span>
 </div>
 </div>
 </div>
@@ -313,9 +314,10 @@ body.kh-leaving{opacity:0;transition:opacity .15s ease-in;}
 <span class="material-symbols-outlined text-secondary text-[22px]">auto_stories</span>
 <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">답사 현장 기록 노트</h3>
 </div>
-<span class="font-label-sm text-label-sm text-primary font-semibold cursor-pointer">전체보기 (15)</span>
+<button type="button" id="kh-notes-all" class="font-label-sm text-label-sm text-primary font-semibold">전체보기 (15)</button>
 </div>
 <div class="flex flex-col gap-space-md">
+<div id="kh-user-notes" class="flex flex-col gap-space-md empty:hidden"></div>
 <!-- Observation Card 1 -->
 <article class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col">
 <div class="flex items-start justify-between">
@@ -398,7 +400,7 @@ body.kh-leaving{opacity:0;transition:opacity .15s ease-in;}
 </section>
 <!-- Sticky Floating Action: New Field Note Entry Button -->
 <div class="px-margin mt-space-xl mb-space-md sticky bottom-24 z-20">
-<button class="w-full h-14 rounded-full bg-primary text-on-primary font-label-lg text-label-lg shadow-xl flex items-center justify-center gap-2 hover:bg-primary-container transition-all active:scale-[0.98]" type="button">
+<button data-open-note="" class="w-full h-14 rounded-full bg-primary text-on-primary font-label-lg text-label-lg shadow-xl flex items-center justify-center gap-2 hover:bg-primary-container transition-all active:scale-[0.98]" type="button">
 <span class="material-symbols-outlined text-[20px]">add_circle</span>
 <span>새 답사 기록 작성하기</span>
 </button>
@@ -453,7 +455,11 @@ body.kh-leaving{opacity:0;transition:opacity .15s ease-in;}
       icon.textContent = 'play_arrow';
     }
   }
-</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-4px_20px_rgba(30,30,36,0.04)]" data-active-classes="text-primary font-semibold"><div class="h-16 px-space-sm flex items-center justify-around"><a class="group flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 text-on-surface-variant hover:text-primary transition-all" data-path="map-explore" href="map.html"><span class="material-symbols-outlined text-[24px]">explore</span><span class="font-label-sm text-label-sm mt-0.5 tracking-tight">지도 탐색</span></a><a class="group flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 text-on-surface-variant hover:text-primary transition-all" data-path="heritage-detail" href="detail.html"><span class="material-symbols-outlined text-[24px]">temple_buddhist</span><span class="font-label-sm text-label-sm mt-0.5 tracking-tight">명소 상세</span></a><a class="group flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 text-on-surface-variant hover:text-primary transition-all" data-path="walking-routes" href="routes.html"><span class="material-symbols-outlined text-[24px]">footprint</span><span class="font-label-sm text-label-sm mt-0.5 tracking-tight">역사 코스</span></a><a aria-current="page" class="group flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 transition-all text-primary font-semibold" data-path="notebook-and-stamps" href="notebook.html"><span class="material-symbols-outlined text-[24px]">menu_book</span><span class="font-label-sm text-label-sm mt-0.5 tracking-tight">탐방 수첩</span></a></div></nav><script id="kh-link-script">
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-4px_20px_rgba(30,30,36,0.04)]" data-active-classes="text-primary font-semibold"><div class="h-16 px-space-sm flex items-center justify-around"><a class="group flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 text-on-surface-variant hover:text-primary transition-all" data-path="map-explore" href="map.html"><span class="material-symbols-outlined text-[24px]">explore</span><span class="font-label-sm text-label-sm mt-0.5 tracking-tight">지도 탐색</span></a><a class="group flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 text-on-surface-variant hover:text-primary transition-all" data-path="heritage-detail" href="detail.html"><span class="material-symbols-outlined text-[24px]">temple_buddhist</span><span class="font-label-sm text-label-sm mt-0.5 tracking-tight">명소 상세</span></a><a class="group flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 text-on-surface-variant hover:text-primary transition-all" data-path="walking-routes" href="routes.html"><span class="material-symbols-outlined text-[24px]">footprint</span><span class="font-label-sm text-label-sm mt-0.5 tracking-tight">역사 코스</span></a><a aria-current="page" class="group flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 transition-all text-primary font-semibold" data-path="notebook-and-stamps" href="notebook.html"><span class="material-symbols-outlined text-[24px]">menu_book</span><span class="font-label-sm text-label-sm mt-0.5 tracking-tight">탐방 수첩</span></a></div></nav><div id="nb-modal"></div>
+<div id="nb-toast" class="fixed bottom-24 left-1/2 -translate-x-1/2 bg-on-background/90 backdrop-blur-md text-surface px-4 py-2 rounded-full font-label-md text-label-md shadow-xl flex items-center gap-2 opacity-0 pointer-events-none transition-all duration-300 z-[70] max-w-[90vw]" role="status" aria-live="polite"><span class="material-symbols-outlined text-[18px] text-primary-fixed">check_circle</span><span></span></div>
+<script src="sites.js"></script>
+<script src="notebook_app.js"></script>
+<script id="kh-link-script">
 /* 네 화면을 잇는 공통 내비게이션 */
 (function(){
   var page=location.pathname.split('/').pop()||'map.html';
@@ -503,6 +509,19 @@ body.kh-leaving{opacity:0;transition:opacity .15s ease-in;}
       });
     });
   };
+  /* 저장된 프로필 사진/인장을 헤더 아바타에 반영 */
+  window.KH_applyAvatar=function(){
+    var p=null;try{p=JSON.parse(localStorage.getItem('kh-profile'))}catch(e){}
+    if(!p||!p.avatar)return;
+    document.querySelectorAll('a[data-path="traveler-profile"]').forEach(function(a){
+      var first=a.firstElementChild;if(!first)return;var el;
+      if(p.avatar.type==='photo'){el=document.createElement('img');el.src=p.avatar.data;el.alt='프로필';el.className='w-8 h-8 rounded-full object-cover kh-avatar'}
+      else{var c={vermilion:'bg-primary-container text-on-primary',matcha:'bg-secondary text-on-secondary',gold:'bg-tertiary-container text-on-tertiary-container',sumi:'bg-inverse-surface text-inverse-on-surface'}[p.avatar.color]||'bg-primary-container text-on-primary';
+        el=document.createElement('span');el.className='w-8 h-8 rounded-full flex items-center justify-center font-headline-sm font-bold text-[15px] kh-avatar '+c;el.textContent=p.avatar.char}
+      el.dataset.khFb='1';first.replaceWith(el);
+    });
+  };
+  window.KH_applyAvatar();
   window.KH_bindLinks(document);
   window.addEventListener('pageshow',function(){document.body.classList.remove('kh-leaving')});
 })();

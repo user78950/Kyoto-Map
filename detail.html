@@ -487,6 +487,19 @@ body.kh-leaving{opacity:0;transition:opacity .15s ease-in;}
       });
     });
   };
+  /* 저장된 프로필 사진/인장을 헤더 아바타에 반영 */
+  window.KH_applyAvatar=function(){
+    var p=null;try{p=JSON.parse(localStorage.getItem('kh-profile'))}catch(e){}
+    if(!p||!p.avatar)return;
+    document.querySelectorAll('a[data-path="traveler-profile"]').forEach(function(a){
+      var first=a.firstElementChild;if(!first)return;var el;
+      if(p.avatar.type==='photo'){el=document.createElement('img');el.src=p.avatar.data;el.alt='프로필';el.className='w-8 h-8 rounded-full object-cover kh-avatar'}
+      else{var c={vermilion:'bg-primary-container text-on-primary',matcha:'bg-secondary text-on-secondary',gold:'bg-tertiary-container text-on-tertiary-container',sumi:'bg-inverse-surface text-inverse-on-surface'}[p.avatar.color]||'bg-primary-container text-on-primary';
+        el=document.createElement('span');el.className='w-8 h-8 rounded-full flex items-center justify-center font-headline-sm font-bold text-[15px] kh-avatar '+c;el.textContent=p.avatar.char}
+      el.dataset.khFb='1';first.replaceWith(el);
+    });
+  };
+  window.KH_applyAvatar();
   window.KH_bindLinks(document);
   window.addEventListener('pageshow',function(){document.body.classList.remove('kh-leaving')});
 })();
