@@ -1,4 +1,249 @@
 <!DOCTYPE html>
-<html lang="ko"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-<meta http-equiv="refresh" content="0; url=map.html"/><title>교토 히스토리아</title></head>
-<body><a href="map.html">교토 히스토리아 시작하기</a></body></html>
+
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/><title>교토 히스토리아</title><meta name="theme-color" content="#1b1b21"/><meta content="mobile_blank" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..700;1,400..700&amp;family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><link rel="stylesheet" href="styles.css"/><style>@layer base { html, body { width: 100%; min-height: 100%; margin: 0; padding: 0; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } } ::-webkit-scrollbar { display: none; }</style><style id="kh-link-style">
+/* 모바일 전용 프레임: 넓은 화면에서는 휴대폰 폭(430px)으로 가운데 정렬 */
+@media (min-width:480px){
+  html{background:#e4e1ea;}
+  body{max-width:430px;margin:0 auto!important;box-shadow:0 0 0 1px #e3beb7,0 12px 40px rgba(30,30,36,.12);}
+  body>header.fixed,body>nav.fixed{max-width:430px;left:50%!important;right:auto!important;transform:translateX(-50%);}
+}
+/* 화면 전환 페이드 */
+body{animation:khIn .2s ease-out;}
+body.kh-leaving{opacity:0;transition:opacity .15s ease-in;}
+@keyframes khIn{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){body{animation:none}body.kh-leaving{transition:none}}
+[data-go]{cursor:pointer;}
+</style>
+</head><body class="bg-surface text-on-surface font-body-md text-body-md antialiased min-h-screen flex flex-col"><main class="flex-1 flex flex-col relative w-full bg-surface"><div class="flex flex-col w-full relative overflow-hidden select-none">
+<!-- Immersive Background Layer with Dynamic Gentle Mist Effect -->
+<div class="relative w-full min-h-[640px] flex flex-col justify-between p-6 sm:p-8" style="min-height:max(640px,100dvh);padding-top:calc(1.5rem + env(safe-area-inset-top,0px));padding-bottom:calc(1.5rem + env(safe-area-inset-bottom,0px))">
+<!-- Background Image with Scrim Gradients -->
+<div class="absolute inset-0 z-0">
+<img alt="Mystical moss-covered stone path lined with endless red-orange torii gates vanishing into misty cedar forest in Fushimi Inari Kyoto" class="w-full h-full object-cover object-center scale-105 transition-transform duration-1000 ease-out" id="hero-bg" src="images/splash-bg.jpg"/>
+<!-- Triple Tone Scrim for Immaculate Legibility and Shibui Atmosphere -->
+<div class="absolute inset-0 bg-gradient-to-b from-[#1b1b21]/80 via-[#1b1b21]/35 to-[#1b1b21]/95"></div>
+<div class="absolute inset-0 bg-radial from-transparent via-[#1b1b21]/30 to-[#1b1b21]/80 mix-blend-multiply"></div>
+<!-- Subtle ambient particle light dots (Fireflies / Shrine dust) -->
+<svg class="absolute inset-0 w-full h-full opacity-40 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+<circle class="animate-pulse" cx="15%" cy="32%" fill="#ffdea5" r="2" style="animation-duration: 3.5s;"></circle>
+<circle class="animate-pulse" cx="82%" cy="28%" fill="#ffdad3" r="1.5" style="animation-duration: 4.8s;"></circle>
+<circle class="animate-pulse" cx="45%" cy="65%" fill="#ffdea5" r="2.5" style="animation-duration: 5.2s;"></circle>
+<circle class="animate-pulse" cx="75%" cy="72%" fill="#ffdad3" r="1" style="animation-duration: 3s;"></circle>
+</svg>
+</div>
+<!-- Top Area: Heritage Vertical Seal Accent & Audio Cue -->
+<div class="relative z-10 flex items-start justify-between pt-2">
+<!-- Traditional Vertical Kanji Seal (Goshuincho Aesthetic) -->
+<div class="flex items-center gap-2.5 backdrop-blur-md bg-[#1b1b21]/45 px-3 py-2 rounded-xl border border-white/10 shadow-sm">
+<div class="w-6 h-6 rounded-md bg-primary-container flex items-center justify-center text-on-primary font-headline-sm text-label-sm font-semibold tracking-tighter">
+          京
+        </div>
+<div class="flex flex-col">
+<span class="text-tertiary-fixed font-label-sm uppercase tracking-widest text-[10px] leading-tight">Heritage Guide</span>
+<span class="text-white/80 font-body-sm text-[11px] font-light">천년의 고도(古都)</span>
+</div>
+</div>
+<!-- Contemplative Sound / Ambient Toggle -->
+<button aria-label="종소리 켜기·끄기" aria-pressed="false" class="w-10 h-10 rounded-full backdrop-blur-md bg-[#1b1b21]/50 border border-white/15 flex items-center justify-center text-tertiary-fixed transition-transform active:scale-90" id="sound-toggle" type="button">
+<span class="material-symbols-outlined text-[20px]" id="bell-icon">notifications_off</span>
+</button>
+</div>
+<!-- Central Identity Anchor (Washi Roundel + Logo Mark) -->
+<div class="relative z-10 flex flex-col items-center justify-center my-auto text-center px-2 py-4">
+<!-- Emblem Container with Gold & Vermilion Aura -->
+<div class="relative mb-5 group cursor-pointer" id="seal-emblem">
+<!-- Soft breathing gold glow ring -->
+<div class="absolute -inset-2 rounded-full bg-gradient-to-tr from-primary-container/40 via-tertiary-fixed-dim/30 to-primary/40 blur-md animate-pulse" style="animation-duration: 4s;"></div>
+<!-- Washi Paper Circular Plate -->
+<div class="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-[#fbf8ff]/95 backdrop-blur-sm shadow-2xl flex items-center justify-center p-3 border-2 border-tertiary-fixed/60 transition-transform duration-500 hover:scale-105">
+<!-- Official Kyoto Historia Logo Asset -->
+<img alt="교토 히스토리아 엠블럼" class="w-full h-full object-contain filter drop-shadow-sm" src="images/emblem.png"/>
+</div>
+<!-- Hanging Vermilion Mini Stamp Seal -->
+<div class="absolute -bottom-2 -right-1 bg-primary text-on-primary text-[9px] font-serif font-bold px-2 py-0.5 rounded-full shadow-md tracking-wider border border-white/30">
+          京都
+        </div>
+</div>
+<!-- App Title Group -->
+<div class="space-y-1.5 flex flex-col items-center">
+<!-- Hanja & Hangul Title Pair -->
+<div class="flex items-center gap-2">
+<span class="h-px w-6 bg-gradient-to-r from-transparent via-tertiary-fixed/70 to-transparent"></span>
+<span class="text-tertiary-fixed text-label-sm tracking-[0.25em] uppercase font-medium">Kyoto Historia</span>
+<span class="h-px w-6 bg-gradient-to-r from-tertiary-fixed/70 via-tertiary-fixed/70 to-transparent"></span>
+</div>
+<h1 class="text-white font-headline-lg text-display-lg-mobile tracking-tight font-serif drop-shadow-md">
+          교토 히스토리아
+        </h1>
+<!-- Poetic Tagline -->
+<p class="text-white/85 font-body-md text-[14px] sm:text-[15px] font-light max-w-[280px] pt-1 leading-relaxed">
+          천년의 수도를 걷다, 시간을 읽다 
+        </p>
+<!-- Vertical Accent Characters -->
+<div class="pt-3 flex items-center gap-4 text-white/50 font-serif text-[11px] tracking-[0.3em]">
+<span>古都</span>
+<span class="w-1 h-1 rounded-full bg-tertiary-fixed/70"></span>
+<span>千年</span>
+<span class="w-1 h-1 rounded-full bg-tertiary-fixed/70"></span>
+<span>歴史</span>
+<span class="w-1 h-1 rounded-full bg-tertiary-fixed/70"></span>
+<span>探訪</span>
+</div>
+</div>
+<!-- Contemplative Quiet Visiting Window Badge -->
+<div class="mt-6 backdrop-blur-md bg-secondary/35 border border-secondary-container/20 rounded-full py-1.5 px-4 flex items-center gap-2 shadow-inner">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed animate-ping"></span>
+<span class="text-secondary-fixed text-label-sm tracking-wide" id="quiet-text">
+          지금 후시미 이나리는 <span class="font-semibold text-white">‘고요한 사색’</span> 시간대입니다
+        </span>
+</div>
+</div>
+<!-- Bottom Actions & Heritage Navigation Anchor -->
+<div class="relative z-10 flex flex-col items-center w-full max-w-sm mx-auto space-y-4 pb-2">
+<!-- Primary Shusu Vermilion CTA Button with Shimmer -->
+<button class="relative w-full group overflow-hidden rounded-full py-3.5 px-6 bg-gradient-to-r from-primary via-primary-container to-primary text-on-primary shadow-xl shadow-primary-container/30 transition-all duration-300 hover:brightness-110 active:scale-[0.98] flex items-center justify-center gap-2.5" id="btn-start" type="button">
+<!-- Dynamic Gloss Shimmer Animation -->
+<div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+<!-- Torii Gate Mini Icon -->
+<span class="material-symbols-outlined text-[20px] text-primary-fixed">temple_buddhist</span>
+<span class="font-headline-sm text-body-lg font-medium tracking-wide">
+          당신의 특별한 경험을 즐겨보기
+        </span>
+<span class="material-symbols-outlined text-[20px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+<!-- Secondary Heritage Action: Goshuin / Existing Traveler Log -->
+<div class="flex items-center justify-between w-full px-2 pt-1 text-white/75 text-body-sm font-label-md">
+<button class="flex items-center gap-1.5 hover:text-white transition-colors py-1 focus:outline-none" id="btn-archive" type="button">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed">auto_stories</span>
+<span id="archive-label">기존 탐방 기록 불러오기</span>
+</button>
+<span class="text-white/30">•</span>
+<button class="flex items-center gap-1.5 hover:text-white transition-colors py-1 focus:outline-none" id="btn-offline" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary-fixed">download_for_offline</span>
+<span>오프라인 지도</span>
+</button>
+</div>
+<!-- Footnote Heritage Registry Info -->
+<div class="pt-2 text-center text-white/45 text-[11px] font-body-sm tracking-wide">
+        <span id="foot-note">교토 문화유산 37선 &amp; 고슈인(御朱印) 아카이브 v1.0</span>
+      </div>
+</div>
+</div>
+<script>
+(function(){
+  var heroBg=document.getElementById('hero-bg');
+  /* 배경이 천천히 다가오는 느낌 */
+  requestAnimationFrame(function(){setTimeout(function(){heroBg&&heroBg.classList.remove('scale-105')},60)});
+
+  /* 시작 · 기록 불러오기 · 오프라인 지도 */
+  function go(url){if(window.KH_go)window.KH_go(url);else location.href=url}
+  document.getElementById('btn-start').addEventListener('click',function(){go('map.html')});
+  document.getElementById('btn-archive').addEventListener('click',function(){go('notebook.html')});
+  var toastT;
+  function toast(m){var t=document.getElementById('splash-toast');t.textContent=m;t.style.opacity='1';clearTimeout(toastT);toastT=setTimeout(function(){t.style.opacity='0'},2400)}
+  document.getElementById('btn-offline').addEventListener('click',function(){toast('오프라인 지도는 다음 업데이트에서 지원할 예정이에요.')});
+
+  /* 저장된 프로필과 기록이 있으면 이어보기 문구로 */
+  try{
+    var p=JSON.parse(localStorage.getItem('kh-profile')||'null');var n=JSON.parse(localStorage.getItem('kh-notes')||'[]');
+    if(p&&p.name)document.getElementById('archive-label').textContent=p.name+' 님의 기록 이어보기'+(n.length?' ('+n.length+')':'');
+  }catch(e){}
+
+  /* 명소 수 */
+  if(window.KH_SITES)document.getElementById('foot-note').innerHTML='교토 문화유산 '+window.KH_SITES.length+'선 &amp; 고슈인(御朱印) 아카이브 v1.0';
+
+  /* 교토 현지 시각 기준 후시미 이나리 분위기 */
+  var d=new Date(Date.now()+(9*60+new Date().getTimezoneOffset())*60000),h=d.getHours()+d.getMinutes()/60;
+  var mood=h>=6&&h<8?['고요한 사색','시간대입니다']:h>=8&&h<10?['한적한 아침','시간대입니다']:h>=10&&h<16?['참배객이 많은','시간대입니다']:h>=16&&h<18.5?['노을 진 도리이','시간대입니다']:['밤의 등롱','아래 참배할 수 있어요'];
+  document.getElementById('quiet-text').innerHTML='지금 후시미 이나리는 <span class="font-semibold text-white">‘'+mood[0]+'’</span> '+mood[1];
+
+  /* 종소리: 누를 때만 켜짐 (브라우저 자동 재생 제한) */
+  var soundBtn=document.getElementById('sound-toggle'),bell=document.getElementById('bell-icon'),on=false,ctx=null;
+  function ring(){
+    try{ctx=ctx||new (window.AudioContext||window.webkitAudioContext)();var t=ctx.currentTime;
+      [[220,1],[440,.5],[661,.28],[1102,.12]].forEach(function(f){var o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.value=f[0];g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.18*f[1],t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+4);o.connect(g);g.connect(ctx.destination);o.start(t);o.stop(t+4.1)});
+    }catch(e){}
+  }
+  soundBtn.addEventListener('click',function(){
+    on=!on;bell.textContent=on?'notifications_active':'notifications_off';bell.style.color=on?'#ffdea5':'rgba(255,255,255,.55)';soundBtn.setAttribute('aria-pressed',on);
+    if(on)ring();
+  });
+  bell.style.color='rgba(255,255,255,.55)';
+
+  /* 엠블럼을 누르면 살짝 숨 쉬듯 */
+  var seal=document.getElementById('seal-emblem');
+  if(seal&&heroBg)seal.addEventListener('click',function(){heroBg.classList.add('scale-110');setTimeout(function(){heroBg.classList.remove('scale-110')},600);if(on)ring()});
+})();
+</script>
+</div></main><div id="splash-toast" role="status" aria-live="polite" class="fixed left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-full bg-[#1b1b21]/90 text-white text-[12px] shadow-xl transition-opacity duration-300 pointer-events-none" style="opacity:0;bottom:calc(1.5rem + env(safe-area-inset-bottom,0px))"></div>
+<script src="sites.js"></script>
+<script id="kh-link-script">
+/* 네 화면을 잇는 공통 내비게이션 */
+(function(){
+  var page=location.pathname.split('/').pop()||'map.html';
+  function go(url){
+    if(!url)return;
+    document.body.classList.add('kh-leaving');
+    setTimeout(function(){location.href=url},150);
+  }
+  function wire(selector,text,url){
+    document.querySelectorAll(selector).forEach(function(el){
+      if(el.textContent.replace(/\s+/g,' ').indexOf(text)>-1&&!el.dataset.go){el.dataset.go=url;}
+    });
+  }
+  if(page==='detail.html'){ wire('button','도장 보기','notebook.html'); }
+  if(page==='routes.html'){
+    wire('button','지도에서 전체 경로 보기','map.html');
+    wire('button','코스 안내 시작하기','map.html');
+  }
+  if(page==='notebook.html'){
+    document.querySelectorAll('.cursor-pointer').forEach(function(c){
+      var t=c.textContent;
+      if(t.indexOf('기요미즈데라')>-1&&t.indexOf('미수집')<0&&!c.dataset.go)c.dataset.go='detail.html';
+      else if(t.indexOf('킨카쿠지')>-1&&!c.dataset.go)c.dataset.go='map.html?site=kinkaku';
+      else if(t.indexOf('후시미 이나리')>-1&&!c.dataset.go)c.dataset.go='map.html?site=fushimi';
+      else if(t.indexOf('니조 성')>-1&&!c.dataset.go)c.dataset.go='map.html?site=nijo';
+      else if(t.indexOf('료안지')>-1&&!c.dataset.go)c.dataset.go='map.html?site=ryoanji';
+      else if(t.indexOf('미수집 슬롯')>-1&&!c.dataset.go)c.dataset.go='map.html';
+    });
+  }
+  /* 화면 안에서 새로 그려진 링크에도 다시 연결할 수 있도록 공개 */
+  window.KH_bindLinks=function(root){
+    root=root||document;
+    root.querySelectorAll('[data-go]').forEach(function(el){
+      if(el.dataset.khBound)return;el.dataset.khBound='1';
+      if(!el.matches('a,button')){el.setAttribute('role','link');el.setAttribute('tabindex','0');}
+      el.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();go(el.dataset.go)});
+      el.addEventListener('keydown',function(e){if(e.key==='Enter'){go(el.dataset.go)}});
+    });
+    root.querySelectorAll('a[href]').forEach(function(a){
+      var target=a.getAttribute('href');
+      if(!/^[a-z]+\.html(\?.*)?$/.test(target)||a.dataset.khBound)return;a.dataset.khBound='1';
+      a.addEventListener('click',function(e){
+        if(e.metaKey||e.ctrlKey)return;
+        e.preventDefault();
+        if(target===page){window.scrollTo({top:0,behavior:'smooth'});return}
+        go(target);
+      });
+    });
+  };
+  /* 저장된 프로필 사진/인장을 헤더 아바타에 반영 */
+  window.KH_applyAvatar=function(){
+    var p=null;try{p=JSON.parse(localStorage.getItem('kh-profile'))}catch(e){}
+    if(!p||!p.avatar)return;
+    document.querySelectorAll('a[data-path="traveler-profile"]').forEach(function(a){
+      var first=a.firstElementChild;if(!first)return;var el;
+      if(p.avatar.type==='photo'){el=document.createElement('img');el.src=p.avatar.data;el.alt='프로필';el.className='w-8 h-8 rounded-full object-cover kh-avatar'}
+      else{var c={vermilion:'bg-primary-container text-on-primary',matcha:'bg-secondary text-on-secondary',gold:'bg-tertiary-container text-on-tertiary-container',sumi:'bg-inverse-surface text-inverse-on-surface'}[p.avatar.color]||'bg-primary-container text-on-primary';
+        el=document.createElement('span');el.className='w-8 h-8 rounded-full flex items-center justify-center font-headline-sm font-bold text-[15px] kh-avatar '+c;el.textContent=p.avatar.char}
+      el.dataset.khFb='1';first.replaceWith(el);
+    });
+  };
+  window.KH_applyAvatar();
+  window.KH_go=go;
+  window.KH_bindLinks(document);
+  window.addEventListener('pageshow',function(){document.body.classList.remove('kh-leaving')});
+})();
+</script>
+</body></html>
