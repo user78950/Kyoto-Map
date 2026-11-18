@@ -1,9 +1,10 @@
 <!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_tab" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"/><style>@layer base{html,body{width:100%;margin:0;padding:0;min-height:100%;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}}::-webkit-scrollbar{display:none;}</style><style id="kh-link-style">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><script>/* 화면 설정을 그리기 전에 먼저 적용 (깜빡임 방지) */(function(){try{var s=JSON.parse(localStorage.getItem("kh-settings")||"{}")||{};var r=document.documentElement;r.dataset.theme=s.theme||"system";r.style.setProperty("--kh-fs",String(s.fs||1))}catch(e){}})();</script>
+<link rel="stylesheet" href="styles.css"/><style>@layer base{html,body{width:100%;margin:0;padding:0;min-height:100%;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}}::-webkit-scrollbar{display:none;}</style><style id="kh-link-style">
 /* 모바일 전용 프레임: 넓은 화면에서는 휴대폰 폭(430px)으로 가운데 정렬 */
 @media (min-width:480px){
-  html{background:#e4e1ea;}
-  body{max-width:430px;margin:0 auto!important;box-shadow:0 0 0 1px #e3beb7,0 12px 40px rgba(30,30,36,.12);}
+  html{background:rgb(var(--c-frame));}
+  body{max-width:430px;margin:0 auto!important;box-shadow:0 0 0 1px rgb(var(--c-frame-line)),0 12px 40px rgba(30,30,36,.12);}
   body>header.fixed,body>nav.fixed{max-width:430px;left:50%!important;right:auto!important;transform:translateX(-50%);}
 }
 /* 화면 전환 페이드 */
@@ -13,7 +14,7 @@ body.kh-leaving{opacity:0;transition:opacity .15s ease-in;}
 @media (prefers-reduced-motion:reduce){body{animation:none}body.kh-leaving{transition:none}}
 [data-go]{cursor:pointer;}
 </style>
-</head><body class="bg-surface text-on-surface font-body-md text-body-md antialiased min-h-screen"><header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)]"><div class="pt-safe"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="교토 히스토리아" class="h-8 w-auto object-contain" src="images/logo.png"><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary tracking-tight leading-none">교토 히스토리아</span><span class="font-label-sm text-label-sm text-on-surface-variant tracking-wider mt-0.5">Walking Routes</span></div></div><div class="flex items-center"><a class="relative flex items-center justify-center p-1 rounded-full hover:bg-surface-container-high transition-colors" data-path="traveler-profile" href="notebook.html"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEqQEMOyeZ_BDa1FVyjs4dmpXIu7jPRy6p-czTLZ1w3KLxBLl4_ldeF4EteM_2wVc87_ck-EAEGTxBbWaGdJ9r_pCapvk9DpoTxvNJub9xseFeTh1Zx0CygLmKYQilPy2_JSEivXgXKrjM90fla5E0RG8lhCWCFro0WFCXntAXdzJOIQ1dHiU92g6uZ4-h49f2QQHyM8A9sdLmoGs-XXIiTlb18TECDmcnB38SLnw"><span class="absolute top-1 right-1 w-2.5 h-2.5 bg-primary-container rounded-full ring-2 ring-surface"></span></a></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full pb-8">
+</head><body class="bg-surface text-on-surface font-body-md text-body-md antialiased min-h-screen"><header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)]"><div class="pt-safe"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="교토 히스토리아" class="h-8 w-auto object-contain" data-kh-logo="" data-light="images/logo.png" data-dark="images/logo-dark.png" src="images/logo.png"><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary tracking-tight leading-none">교토 히스토리아</span><span class="font-label-sm text-label-sm text-on-surface-variant tracking-wider mt-0.5">Walking Routes</span></div></div><div class="flex items-center"><a class="relative flex items-center justify-center p-1 rounded-full hover:bg-surface-container-high transition-colors" data-path="traveler-profile" href="notebook.html"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEqQEMOyeZ_BDa1FVyjs4dmpXIu7jPRy6p-czTLZ1w3KLxBLl4_ldeF4EteM_2wVc87_ck-EAEGTxBbWaGdJ9r_pCapvk9DpoTxvNJub9xseFeTh1Zx0CygLmKYQilPy2_JSEivXgXKrjM90fla5E0RG8lhCWCFro0WFCXntAXdzJOIQ1dHiU92g6uZ4-h49f2QQHyM8A9sdLmoGs-XXIiTlb18TECDmcnB38SLnw"><span class="absolute top-1 right-1 w-2.5 h-2.5 bg-primary-container rounded-full ring-2 ring-surface"></span></a></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full pb-8">
 <!-- Sub-Header & Narrative Title -->
 <section class="px-margin pt-4 pb-2">
 <div class="flex items-center gap-space-xs text-primary mb-1">
@@ -48,7 +49,7 @@ body.kh-leaving{opacity:0;transition:opacity .15s ease-in;}
 <!-- Master Route Hero Visual with Scrim -->
 <div class="relative w-full h-48 bg-surface-container-high overflow-hidden">
 <img class="w-full h-full object-cover" data-alt="Traditional Kyoto imperial gravel path lined with ancient pine trees and quiet historic stone walls in gentle morning mist, vermilion touches, Japanese historic garden atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDpqv6EfXQEL1nFcvwSshp9ZSf5v_aidQfazjmXwTFbehaDsFHKn8xxvrMOJVRHYzQjcf_GxRD4HC1VRJBdaOxk58A2iMjwnVcoeTm1AAKD8gnhdWBDr7AXrL45rkweOlREB7jZA4atkYFiPTSgKJCMZu75jBLyyXGQMm9LQGeAYcZDdY63XA3ZcsGIQO_pteZr2DjPwlu0pjhG5c20pxL8BnW9WqIjvVxiYXF7OY">
-<div class="absolute inset-0 bg-gradient-to-t from-on-background/80 via-on-background/30 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/30 to-transparent"></div>
 <!-- Top District / Heritage Badges -->
 <div class="absolute top-3 left-3 right-3 flex items-center justify-between">
 <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm shadow-sm">
@@ -63,7 +64,7 @@ body.kh-leaving{opacity:0;transition:opacity .15s ease-in;}
 <!-- Master Title Floating in Scrim -->
 <div class="absolute bottom-3 left-3 right-3">
 <span class="font-label-sm text-label-sm text-primary-fixed uppercase tracking-wider block mb-0.5">Kyoto Central Heritage Axis</span>
-<h2 class="font-headline-sm text-headline-sm text-surface font-semibold leading-snug">
+<h2 class="font-headline-sm text-headline-sm text-paper font-semibold leading-snug">
             헤이안 천도에서 에도 막부까지: 권력과 신앙의 교토 축선 코스
           </h2>
 </div>
@@ -143,14 +144,14 @@ body.kh-leaving{opacity:0;transition:opacity .15s ease-in;}
 <!-- Map & Visual Split Mini-Preview -->
 <div class="grid grid-cols-2 gap-1 px-4 pb-4">
 <div class="h-28 bg-surface-container rounded-lg bg-cover bg-center relative overflow-hidden" data-location="Ryoanji Temple, Kyoto">
-<div class="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 rounded bg-on-background/70 backdrop-blur-sm text-surface font-label-sm text-[10px] flex items-center gap-0.5">
+<div class="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 rounded bg-ink/70 backdrop-blur-sm text-paper font-label-sm text-[10px] flex items-center gap-0.5">
 <span class="material-symbols-outlined text-[10px]">pin_drop</span>
 <span>료안지 석정</span>
 </div>
 </div>
 <div class="h-28 rounded-lg overflow-hidden relative">
 <img class="w-full h-full object-cover" data-alt="Golden Pavilion Kinkakuji temple reflecting calmly in a quiet serene pond surrounded by lush Japanese cedar and moss, soft afternoon light, Kyoto tranquility" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQiWxkD6nxdGUcB0_YtU9ZzjMl_RmzsozadTTBgQsqp4whykjndxAWFMJdekaLEQX_q2dqDwhBITZwNL8bx2_76I_XRZ0-qwQpLTsGFydgNsjZjTnEVRoMKZQRcW4SfYC1MPx6mwBZ1YJHIjvlUO-DG8OHBS1aDIpKEMQvaU6-znM2vRqv-picSyCAlbpb5g4xwr_jclZyF9wpJjrtfuxZl0IRK_iqiI2jad81kh8">
-<div class="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 rounded bg-on-background/70 backdrop-blur-sm text-surface font-label-sm text-[10px] flex items-center gap-0.5">
+<div class="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 rounded bg-ink/70 backdrop-blur-sm text-paper font-label-sm text-[10px] flex items-center gap-0.5">
 <span class="material-symbols-outlined text-[10px]">photo_camera</span>
 <span>킨카쿠지</span>
 </div>
@@ -199,14 +200,14 @@ body.kh-leaving{opacity:0;transition:opacity .15s ease-in;}
 <!-- Map & Visual Split Mini-Preview -->
 <div class="grid grid-cols-2 gap-1 px-4 pb-4">
 <div class="h-28 bg-surface-container rounded-lg bg-cover bg-center relative overflow-hidden" data-location="Philosopher's Path, Kyoto">
-<div class="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 rounded bg-on-background/70 backdrop-blur-sm text-surface font-label-sm text-[10px] flex items-center gap-0.5">
+<div class="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 rounded bg-ink/70 backdrop-blur-sm text-paper font-label-sm text-[10px] flex items-center gap-0.5">
 <span class="material-symbols-outlined text-[10px]">pin_drop</span>
 <span>철학의 길</span>
 </div>
 </div>
 <div class="h-28 rounded-lg overflow-hidden relative">
 <img class="w-full h-full object-cover" data-alt="Nanzenji temple red brick aqueduct Suirokaku bridge surrounded by maple autumn foliage, historical architecture in Kyoto quiet forest, misty gentle light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzR2CAywm9vvLgksKDs_h5RNGrixA4KzTGJ3VpoCpGVfD4Uq0iyZklv7yB8kBHCRohIAdSPT24aHIxssdtkxCdJdLVnVvNHjoquP581gi_ZYgVk2FS2YRPGj89BSihB0NtH9ZCBJoevqZwn3TY4KQYMzAymt4greKsBKggZetvuHnAnEGTyaW5lCn4vJocirOYTfxMHW9mPDoJA-8qDima68x_WNUUoxjkn2fRmSA">
-<div class="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 rounded bg-on-background/70 backdrop-blur-sm text-surface font-label-sm text-[10px] flex items-center gap-0.5">
+<div class="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 rounded bg-ink/70 backdrop-blur-sm text-paper font-label-sm text-[10px] flex items-center gap-0.5">
 <span class="material-symbols-outlined text-[10px]">photo_camera</span>
 <span>난젠지 수로각</span>
 </div>
@@ -255,14 +256,14 @@ body.kh-leaving{opacity:0;transition:opacity .15s ease-in;}
 <!-- Map & Visual Split Mini-Preview -->
 <div class="grid grid-cols-2 gap-1 px-4 pb-4">
 <div class="h-28 bg-surface-container rounded-lg bg-cover bg-center relative overflow-hidden" data-location="Teradaya Inn, Fushimi, Kyoto">
-<div class="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 rounded bg-on-background/70 backdrop-blur-sm text-surface font-label-sm text-[10px] flex items-center gap-0.5">
+<div class="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 rounded bg-ink/70 backdrop-blur-sm text-paper font-label-sm text-[10px] flex items-center gap-0.5">
 <span class="material-symbols-outlined text-[10px]">pin_drop</span>
 <span>테라다야</span>
 </div>
 </div>
 <div class="h-28 rounded-lg overflow-hidden relative">
 <img class="w-full h-full object-cover" data-alt="Traditional Japanese wooden canal town of Fushimi with weeping willows hanging over the quiet river and historic sake breweries with white earthen walls in Kyoto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmSD6XL427g2sajUokgp79kNvzV1fco8lvH1_5JFtI7smPxn4kWOH9CzTqo4F8WFL1sTvoQ6Onzq_Wa9Y9BXuSgcYKRT2DtDfqDCmHXw_34GeGMjbvVLwM8PmXlGBOkQt-WmXix7vo4FhkkJRTgZFgtjCFVe6Pu2tZrSjHO9ydKUqq-MU6Fl9-4K4OvQ_7PqxpE65z25AvgeibTg5pPaHD6lBjvKPbBLRvY7Xy198">
-<div class="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 rounded bg-on-background/70 backdrop-blur-sm text-surface font-label-sm text-[10px] flex items-center gap-0.5">
+<div class="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 rounded bg-ink/70 backdrop-blur-sm text-paper font-label-sm text-[10px] flex items-center gap-0.5">
 <span class="material-symbols-outlined text-[10px]">photo_camera</span>
 <span>후시미 수로</span>
 </div>
@@ -314,6 +315,7 @@ body.kh-leaving{opacity:0;transition:opacity .15s ease-in;}
   </script>
 </div></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-4px_20px_rgba(30,30,36,0.04)]" data-active-classes="text-primary font-semibold"><div class="h-16 px-space-sm flex items-center justify-around"><a class="group flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 text-on-surface-variant hover:text-primary transition-all" data-path="map-explore" href="map.html"><span class="material-symbols-outlined text-[24px]">explore</span><span class="font-label-sm text-label-sm mt-0.5 tracking-tight">지도 탐색</span></a><a class="group flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 text-on-surface-variant hover:text-primary transition-all" data-path="heritage-detail" href="detail.html"><span class="material-symbols-outlined text-[24px]">temple_buddhist</span><span class="font-label-sm text-label-sm mt-0.5 tracking-tight">명소 상세</span></a><a aria-current="page" class="group flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 transition-all text-primary font-semibold" data-path="walking-routes" href="routes.html"><span class="material-symbols-outlined text-[24px]">footprint</span><span class="font-label-sm text-label-sm mt-0.5 tracking-tight">역사 코스</span></a><a class="group flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 text-on-surface-variant hover:text-primary transition-all" data-path="notebook-and-stamps" href="notebook.html"><span class="material-symbols-outlined text-[24px]">menu_book</span><span class="font-label-sm text-label-sm mt-0.5 tracking-tight">탐방 수첩</span></a></div></nav>
 
+<script src="settings.js"></script>
 <script id="kh-link-script">
 /* 네 화면을 잇는 공통 내비게이션 */
 (function(){

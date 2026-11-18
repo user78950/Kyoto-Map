@@ -184,9 +184,9 @@
     const tag={p:'bg-primary/10 text-primary',s:'bg-secondary-container text-on-secondary-container',t:'bg-tertiary-fixed text-on-tertiary-fixed'};
     const dot=['bg-primary','bg-secondary','bg-tertiary'],txt=['text-primary','text-secondary','text-tertiary'];
     const root=$('#kh-modal');
-    root.innerHTML=`<div id="kh-scrim" class="fixed inset-0 z-[60] bg-on-background/40 flex items-end justify-center">
+    root.innerHTML=`<div id="kh-scrim" class="fixed inset-0 z-[60] bg-ink/50 flex items-end justify-center">
       <div class="kh-sheet w-full max-w-[430px] max-h-[88vh] overflow-y-auto bg-surface rounded-t-2xl shadow-xl pb-[calc(1.25rem+env(safe-area-inset-bottom,0px))]" role="dialog" aria-modal="true" aria-label="${esc(s.ko)} 역사 해설">
-        <div class="relative h-48 overflow-hidden rounded-t-2xl">${thumb(s,true)}<div class="absolute inset-0 bg-gradient-to-t from-on-background/90 via-on-background/30 to-transparent"></div>
+        <div class="relative h-48 overflow-hidden rounded-t-2xl">${thumb(s,true)}<div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-transparent"></div>
           <button id="kh-close" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-surface/80 backdrop-blur-md text-on-surface flex items-center justify-center" aria-label="닫기">${ms('close','text-[20px]')}</button>
           <div class="absolute bottom-3 left-margin right-margin text-white"><div class="flex flex-wrap gap-1.5 mb-1">${s.unesco?`<span class="inline-flex items-center gap-1 bg-primary-container text-white px-2.5 py-0.5 rounded-full font-label-sm text-label-sm">${ms('stars','text-[13px]',true)} 유네스코 세계유산</span>`:''}${s.nt?`<span class="bg-white/20 backdrop-blur-md px-2.5 py-0.5 rounded-full font-label-sm text-label-sm">${esc(s.nt)}</span>`:''}<span class="bg-white/20 backdrop-blur-md px-2.5 py-0.5 rounded-full font-label-sm text-label-sm">${esc(yText(s))}</span></div>
             <h2 class="font-display-lg-mobile text-[26px] leading-tight font-semibold">${esc(s.ko)} <span class="font-headline-sm text-headline-sm font-normal text-white/80">${esc(s.ja)}</span></h2></div>
@@ -264,6 +264,7 @@
   if(eraBtn)eraBtn.addEventListener('click',()=>{ei=(ei+1)%eras.length;eraText.textContent=eras[ei]});
   const loc=$('#locate-btn');if(loc)loc.addEventListener('click',()=>{if(!navigator.geolocation){toast('위치 정보를 쓸 수 없습니다.');return}navigator.geolocation.getCurrentPosition(p=>{const me={lat:p.coords.latitude,lng:p.coords.longitude};const n=S.filter(s=>!s.far).map(s=>({s,d:km(me,s)})).sort((a,b)=>a.d-b.d)[0];if(n.d>30){toast('현재 위치가 교토 밖에 있습니다.');return}select(n.s.id,true);toast(`가장 가까운 곳: ${n.s.ko} (${n.d<=2.4?'도보 '+walk(n.d)+'분':n.d.toFixed(1)+'km'})`)},()=>toast('위치 권한이 없어 현재 위치를 찾지 못했습니다.'),{timeout:8000})});
 
+  window.KH_relayout=function(){clamp();layout()};
   /* ---------- 시작 ---------- */
   syncChips();if(q0&&BY[q0])centerOn(BY[q0]);drawPins();renderSheet();renderNearby();
 })();

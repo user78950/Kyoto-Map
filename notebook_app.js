@@ -16,7 +16,7 @@
   /* ---------- 공용 시트(모달) ---------- */
   function sheet(title,body,onMount){
     const root=$('#nb-modal');
-    root.innerHTML=`<div id="nb-scrim" class="fixed inset-0 z-[60] bg-on-background/40 flex items-end justify-center">
+    root.innerHTML=`<div id="nb-scrim" class="fixed inset-0 z-[60] bg-ink/50 flex items-end justify-center">
       <div class="w-full max-w-[430px] max-h-[92vh] flex flex-col bg-surface rounded-t-2xl shadow-xl" role="dialog" aria-modal="true" aria-label="${esc(title)}">
         <div class="pt-2.5 pb-1"><div class="w-10 h-1 rounded-full bg-surface-container-highest mx-auto"></div></div>
         <div class="flex items-center justify-between px-margin py-2"><h2 class="font-headline-md text-headline-md text-on-surface">${esc(title)}</h2><button type="button" id="nb-close" class="w-9 h-9 rounded-full hover:bg-surface-container flex items-center justify-center text-on-surface-variant" aria-label="닫기">${ms('close','text-[20px]')}</button></div>
@@ -155,7 +155,7 @@
     countUI();
   }
   function viewPhoto(src){
-    const root=$('#nb-modal');root.innerHTML=`<div id="nb-scrim" class="fixed inset-0 z-[60] bg-on-background/85 flex items-center justify-center p-4"><img class="max-w-full max-h-[85vh] rounded-xl shadow-xl" alt="답사 사진" src="${src}"/><button type="button" id="nb-close" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-surface/90 flex items-center justify-center" aria-label="닫기">${ms('close','text-[20px]')}</button></div>`;
+    const root=$('#nb-modal');root.innerHTML=`<div id="nb-scrim" class="fixed inset-0 z-[60] bg-ink/85 flex items-center justify-center p-4"><img class="max-w-full max-h-[85vh] rounded-xl shadow-xl" alt="답사 사진" src="${src}"/><button type="button" id="nb-close" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-surface/90 flex items-center justify-center" aria-label="닫기">${ms('close','text-[20px]')}</button></div>`;
     const close=()=>root.innerHTML='';$('#nb-close').onclick=close;$('#nb-scrim').onclick=e=>{if(e.target.id==='nb-scrim')close()};
   }
   function openNote(edit){
@@ -189,7 +189,7 @@
         document.querySelectorAll('[data-k]').forEach(b=>{const on=d.kind===b.dataset.k;b.className=`px-3 py-1.5 rounded-full font-label-md text-label-md flex items-center gap-1 ${on?'bg-inverse-surface text-inverse-on-surface':'bg-surface-container text-on-surface-variant'}`});
         document.querySelectorAll('[data-w]').forEach(b=>{const on=d.weather===b.dataset.w;b.className=`flex-1 h-[46px] rounded-xl flex items-center justify-center ${on?'bg-secondary text-on-secondary':'bg-surface-container text-on-surface-variant'}`});
         v('#nt-title-c').textContent=`${v('#nt-title').value.length}/40`;v('#nt-body-c').textContent=`${v('#nt-body').value.length}/1000`;
-        v('#nt-photos').innerHTML=d.photos.map((p,i)=>`<div class="relative aspect-square rounded-xl overflow-hidden bg-surface-container"><img class="w-full h-full object-cover" alt="첨부 사진 ${i+1}" src="${p}"/><button type="button" data-rm="${i}" class="absolute top-1 right-1 w-6 h-6 rounded-full bg-on-background/70 text-surface flex items-center justify-center" aria-label="사진 빼기">${ms('close','text-[14px]')}</button></div>`).join('')+(d.photos.length<3?`<label class="aspect-square rounded-xl border-2 border-dashed border-outline-variant flex flex-col items-center justify-center gap-1 text-on-surface-variant cursor-pointer hover:bg-surface-container-low">${ms('add_a_photo','text-[24px]')}<span class="font-label-sm text-label-sm">${d.photos.length}/3</span><input id="nt-file" type="file" accept="image/*" multiple class="hidden"></label>`:'');
+        v('#nt-photos').innerHTML=d.photos.map((p,i)=>`<div class="relative aspect-square rounded-xl overflow-hidden bg-surface-container"><img class="w-full h-full object-cover" alt="첨부 사진 ${i+1}" src="${p}"/><button type="button" data-rm="${i}" class="absolute top-1 right-1 w-6 h-6 rounded-full bg-ink/70 text-paper flex items-center justify-center" aria-label="사진 빼기">${ms('close','text-[14px]')}</button></div>`).join('')+(d.photos.length<3?`<label class="aspect-square rounded-xl border-2 border-dashed border-outline-variant flex flex-col items-center justify-center gap-1 text-on-surface-variant cursor-pointer hover:bg-surface-container-low">${ms('add_a_photo','text-[24px]')}<span class="font-label-sm text-label-sm">${d.photos.length}/3</span><input id="nt-file" type="file" accept="image/*" multiple class="hidden"></label>`:'');
         v('#nt-photos').querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{d.photos.splice(+b.dataset.rm,1);sync()});
         const f=v('#nt-file');if(f)f.onchange=async e=>{const files=[...e.target.files].slice(0,3-d.photos.length);for(const file of files){try{d.photos.push(await shrink(file,960,.72))}catch(err){toast('사진을 불러오지 못했습니다.')}}sync()};
         const box=v('#nt-tagbox'),inp=v('#nt-tag');box.querySelectorAll('.nt-chip').forEach(c=>c.remove());
